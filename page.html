@@ -58,10 +58,41 @@
     <!-- CONTENT -->
     <main id="detail-page">
       <div class="country-info">
-        <h1 id="country-name">Loading...</h1>
-        <p>Population: <span id="population">-</span></p>
-        <p>Region: <span id="region">-</span></p>
-        <p>Capital: <span id="capital">-</span></p>
+        <a href="index.html">Back</a>
+        <div class="container">
+          <div class="info">
+            <div class="img-container">
+              <figure>
+                <img id="country-img" />
+              </figure>
+            </div>
+            <div class="contxt">
+              <h2 id="country-name"></h2>
+              <div class="inner-wrapper">
+                <div class="col">
+                  <p>Native Name: <span id="native-name">-</span></p>
+                  <p>Population: <span id="population">-</span></p>
+                  <p>Region: <span id="region">-</span></p>
+                  <p>Sub Region: <span id="subregion">-</span></p>
+                  <p>Capital: <span id="capital">-</span></p>
+                </div>
+                <div class="col">
+                  <p>Top Level Domain: <span id="top-domain">-</span></p>
+                  <p>Currencies: <span id="currencies">-</span></p>
+                  <p>Languages: <span id="lan">-</span></p>
+                </div>
+              </div>
+              <div class="border-countries">
+                <p>Border Countries:</p>
+                <div id="badge-list">
+                  <span class="badge"></span>
+                  <span class="badge"></span>
+                  <span class="badge"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <!-- JS -->

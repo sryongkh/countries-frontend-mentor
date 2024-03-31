@@ -28,20 +28,32 @@ $(document).ready(function () {
   console.log(countryName);
   if (countryName) {
     $.getJSON("../../data.json", function (data) {
-      // ใช้ find หรือเทคนิคการค้นหาเพื่อหาข้อมูลของประเทศที่ต้องการจาก JSON
       const country = data.find((item) => item.name === countryName);
+      console.log(country);
       if (country) {
-        // แสดงข้อมูลประเทศที่พบ
         $("#country-name").text(country.name);
+        $("#native-name").text(country.nativeName);
         $("#population").text(country.population.toLocaleString());
         $("#region").text(country.region);
+        $("#subregion").text(country.subregion);
         $("#capital").text(country.capital);
+        $("#top-domain").text(country.topLevelDomain);
+        $("#currencies").text(country.currencies);
+        $("#lan").text(country.languages);
+        $("#badge-list").text(country.borders);
+        $("#country-img").attr("src", country.flag);
       } else {
-        // กรณีไม่พบข้อมูลประเทศ
         $("#country-name").text("Country data not found.");
+        $("#native-name").text("N/A");
         $("#population").text("N/A");
         $("#region").text("N/A");
+        $("#subregion").text("N/A");
         $("#capital").text("N/A");
+        $("#top-domain").text("N/A");
+        $("#currencies").text("N/A");
+        $("#lan").text("N/A");
+        $(".badge-list").text("N/A");
+
       }
     });
   } else {

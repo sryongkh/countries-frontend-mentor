@@ -204,3 +204,32 @@ main {
 #country-list a > div > p {
   font-size: 12px;
 }
+#detail-page .info {
+  display: flex;
+  grid-gap: var(--spacing-ctn);
+}
+#detail-page .info > div {
+    width: 50%;
+}
+#detail-page figure {
+  width: 100%;
+  max-width: 559px;
+}
+#detail-page figure > img {
+  width: 100%;
+  height: 100%;
+}
+#detail-page .inner-wrapper {
+  display: flex;
+}
+#detail-page .info .contxt {
+    display: flex;
+    flex-direction: column;
+    margin-block: auto;
+}
+#detail-page .info .contxt > h2 {
+    margin-bottom: 1.5rem;
+}
+#detail-page .info .contxt > div {
+    margin-bottom: 2rem;
+}
