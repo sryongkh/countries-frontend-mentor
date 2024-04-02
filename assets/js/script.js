@@ -25,11 +25,11 @@ $(document).ready(function () {
 $(document).ready(function () {
   const params = new URLSearchParams(window.location.search);
   const countryName = params.get("country");
-  console.log(countryName);
+  // console.log(countryName);
   if (countryName) {
     $.getJSON("../../data.json", function (data) {
       const country = data.find((item) => item.name === countryName);
-      console.log(country);
+      // console.log(country);
       if (country) {
         $("#country-name").text(country.name);
         $("#native-name").text(country.nativeName);
@@ -38,9 +38,36 @@ $(document).ready(function () {
         $("#subregion").text(country.subregion);
         $("#capital").text(country.capital);
         $("#top-domain").text(country.topLevelDomain);
-        $("#currencies").text(country.currencies);
-        $("#lan").text(country.languages);
-        $("#badge-list").text(country.borders);
+        // Currencies
+        // console.log(country.currencies);
+        const currency = country.currencies;
+        const currencyStrings = currency.map((item) => {
+          return `${item.code}`;
+        });
+        const currencyText = currencyStrings.join(", ");
+        $("#currencies").text(currencyText);
+        // Language
+        // console.log(country.languages);
+        const lang = country.languages;
+        const langStrings = lang.map((item) => {
+          return `${item.name}`;
+        });
+        const langText = langStrings.join(", ");
+        $("#lan").text(langText);
+        // Border Country
+        // console.log(country.borders);
+        const border = country.borders;
+        border.forEach((borderCode) => {
+          const country = data.find(
+            (countryItem) => countryItem.alpha3Code === borderCode
+          );
+          if (country) {
+            $("#badge-list").append(`<div>${country.name}</div>`);
+          } else {
+            console.log(`No country found for code: ${borderCode}`);
+          }
+        });
+
         $("#country-img").attr("src", country.flag);
       } else {
         $("#country-name").text("Country data not found.");
@@ -53,7 +80,6 @@ $(document).ready(function () {
         $("#currencies").text("N/A");
         $("#lan").text("N/A");
         $(".badge-list").text("N/A");
-
       }
     });
   } else {

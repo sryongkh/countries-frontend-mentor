@@ -238,6 +238,22 @@ main {
 #detail-page .info .contxt > div:nth-last-child(1) {
   margin: 0;
 }
+#border-countries, #badge-list{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  grid-gap: 0.5rem;
+}
+#border-countries {
+}
+#border-countries p {
+  text-wrap: nowrap;
+}
+#badge-list > div {
+  padding: 0.25rem 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--white);
+}
 .btn {
   display: flex;
   align-items: center;
