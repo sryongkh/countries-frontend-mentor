@@ -51,7 +51,6 @@ $(document).ready(function () {
     });
   });
 });
-
 // Page
 $(document).ready(function () {
   const params = new URLSearchParams(window.location.search);
@@ -116,4 +115,59 @@ $(document).ready(function () {
   } else {
     $("#country-name").text("Country not specified");
   }
+});
+// Darkmode
+$(document).ready(function () {
+  let isDarkmode = localStorage.getItem("isDarkmode") === "true";
+  const toggleDarkmode = () => {
+    if (!isDarkmode) {
+      $("header").css({
+        "background-color": "var(--dark-blue)",
+        "color": "white",
+      });
+      $("#darkmode").text("Light mode");
+      $("body").css({
+        "background-color": "var(--very-dark-blue)",
+        "color": "white",
+      });
+      $(this).html('<ion-icon name="sunny"></ion-icon>Light mode');
+      $("header button, .country-info").css({ "color": "white" });
+      $(".input-wrapper").css({ "background-color": "var(--dark-blue)" });
+      $("#country-list a > div").css("background-color", "var(--dark-blue)");
+      $(".btn").css({
+        "background-color": "var(--dark-blue)",
+        "color": "white",
+      });
+      $("#badge-list div").css({
+        "background-color": "var(--dark-blue)",
+        "color": "white",
+      });
+      isDarkmode = true;
+    } else {
+      $("header").css({ "background-color": "var(--white)", "color": "black" });
+      $("#darkmode").text("Dark mode");
+      $("body").css({
+        "background-color": "var(--light-gray)",
+        "color": "var(--black)",
+      });
+      $(this).html('<ion-icon name="moon"></ion-icon>Dark mode');
+      $("header button, .country-info").css({ "color": "black" });
+      $(".input-wrapper").css({ "background-color": "var(--white)" });
+      $("#country-list a > div").css("background-color", "var(--white)");
+      $(".btn").css({
+        "background-color": "var(--white)",
+        "color": "black",
+      });
+      $("#badge-list div").css({
+        "background-color": "var(--white)",
+        "color": "black",
+      });
+      isDarkmode = false;
+    }
+  };
+  toggleDarkmode();
+  $("#darkmode").click(function(e) {
+    e.preventDefault();
+    toggleDarkmode();
+  })
 });
