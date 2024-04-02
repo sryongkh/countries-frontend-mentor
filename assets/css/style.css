@@ -115,6 +115,9 @@ textarea,
 select {
   font: inherit;
 }
+input:focus {
+  outline: none;
+}
 button {
   border: 0;
   background: transparent;
@@ -294,4 +297,26 @@ main {
 .btn .inner-wrapper {
   display: flex;
   align-items: center;
+}
+.input-wrapper {
+}
+.input-wrapper {
+  min-width: 30rem;
+  display: flex;
+  align-items: center;
+  grid-gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background: var(--white);
+  box-shadow: var(--shadow-2);
+  border-radius: 6px;
+}
+.input-wrapper .icon {
+  color: var(--dark-gray);
+}
+.input-wrapper input, .input-wrapper select {
+  border: 0 !important;
+}
+.input-wrapper select {
+  background: var(--white);
+  padding: 0.5rem 1.5rem;
 }
