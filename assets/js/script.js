@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $.getJSON("../../data.json", function (data) {
     $.each(data, function (index, item) {
+      // แก้ไขที่นี่
       $("#country-list").append(`
           <a href="page.html?country=${encodeURIComponent(item.name)}">
               <figure><img src="${
@@ -17,10 +18,40 @@ $(document).ready(function () {
                   </div>
               </div>
           </a>
-        `);
+      `);
+    });
+    // Select Option
+    let regions = new Set();
+    $.each(data, function (index, item) {
+      regions.add(item.region);
+    });
+    regions.forEach((region) => {
+      if (region) {
+        $("#filter-region").append(
+          `<option value="${region}">${region}</option>`
+        );
+      }
+    });
+    $("#search-country").on("keyup", function () {
+      let searchTerm = $(this).val().toLowerCase();
+      $("#country-list a").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -1);
+      });
+    });
+    // Input Filter
+    $("#filter-region").on("change", function () {
+      let region = $(this).val();
+      $("#country-list a").filter(function () {
+        if (region === "") {
+          $(this).show(); // แสดงทั้งหมดถ้าไม่มี region เลือก
+        } else {
+          $(this).toggle($(this).find(".region").text() === region);
+        }
+      });
     });
   });
 });
+
 // Page
 $(document).ready(function () {
   const params = new URLSearchParams(window.location.search);
